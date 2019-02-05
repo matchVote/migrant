@@ -1,21 +1,25 @@
 # Migrator
 
-**TODO: Add description**
+Migrator manages the matchVote Postgresql database schema. It is also used with
+other MV services as the local development and test database container. This 
+removes the need for each service to manage its own local DB copy (and migrations).
 
-## Installation
+## Local development of services
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `migrator` to your list of dependencies in `mix.exs`:
+Since all services share the same DB, you must first start it with migrator for 
+local development and testing. The other services will not work without this DB container running.
 
-```elixir
-def deps do
-  [
-    {:migrator, "~> 0.1.0"}
-  ]
-end
-```
+    $ docker-compose up --scale migrator=0
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/migrator](https://hexdocs.pm/migrator).
+On initial creation, `setup` must be run for dev and test.
 
+    $ docker-compose run --rm migrator mix ecto.setup
+    $ docker-compose run --rm -e MIX_ENV=test migrator mix ecto.setup
+
+Afterwards, other MV services will be able to connect to the `matchvote_db` 
+container and use the `matchvote_dev` and `matchvote_test` databases.
+
+## Deployment
+
+New migrations will need to be run against the production DB before any 
+dependent services are deployed.
