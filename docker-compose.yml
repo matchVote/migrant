@@ -1,0 +1,13 @@
+version: "3"
+services:
+  migrator:
+    build: .
+    volumes:
+      - .:/opt/app
+    depends_on:
+      - matchvote_db
+
+  matchvote_db:
+    image: postgres:9.6
+    ports:
+      - "5653:5432"
