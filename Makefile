@@ -14,3 +14,10 @@ build: ## Build the Docker image
 	docker build --build-arg APP_NAME=$(APP_NAME) \
 	--build-arg APP_VSN=$(APP_VSN) \
 	-t $(APP_NAME):$(APP_VSN) .
+
+start: ## Start DB as daemon
+	docker-compose up -d --scale migrant=0
+
+setup: ## Initial setup of DB for dev/test
+	docker-compose run --rm migrant mix ecto.setup
+	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.setup
