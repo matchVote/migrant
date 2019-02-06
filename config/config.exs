@@ -1,5 +1,5 @@
 use Mix.Config
 
-config :migrator, ecto_repos: [Migrator.Repo]
+config :migrant, ecto_repos: [Migrant.Repo]
 
 import_config "#{Mix.env()}.exs"

@@ -1,12 +1,12 @@
-defmodule Migrator.Application do
+defmodule Migrant.Application do
   use Application
 
   def start(_type, _args) do
     children = [
-      Migrator.Repo
+      Migrant.Repo
     ]
 
-    opts = [strategy: :one_for_one, name: Migrator.Supervisor]
+    opts = [strategy: :one_for_one, name: Migrant.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

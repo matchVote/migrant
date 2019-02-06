@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :migrator, Migrator.Repo,
+config :migrant, Migrant.Repo,
   database: "matchvote_test",
   username: "postgres",
   password: "postgres",

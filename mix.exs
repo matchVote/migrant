@@ -1,9 +1,9 @@
-defmodule Migrator.MixProject do
+defmodule Migrant.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :migrator,
+      app: :migrant,
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
@@ -16,7 +16,7 @@ defmodule Migrator.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Migrator.Application, []}
+      mod: {Migrant.Application, []}
     ]
   end
 

@@ -1,5 +1,5 @@
-defmodule Migrator.Repo do
+defmodule Migrant.Repo do
   use Ecto.Repo,
-    otp_app: :migrator,
+    otp_app: :migrant,
     adapter: Ecto.Adapters.Postgres
 end

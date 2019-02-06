@@ -1,2 +1,0 @@
-defmodule Migrator do
-end
