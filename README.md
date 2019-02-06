@@ -6,8 +6,8 @@ removes the need for each service to manage its own local DB copy (and migration
 
 ## Local development of services
 
-Since all services share the same DB, you must first start it with migrant for 
-local development and testing. The other services will not work without this DB 
+Since the same DB is shared by all services, you must first start it with Migrant 
+for local development and testing. The other services will not work without this DB 
 container running.
 
     $ make start
