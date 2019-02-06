@@ -23,6 +23,7 @@ defmodule Migrant.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:distillery, "~> 2.0.12"},
       {:ecto_sql, "~> 3.0.4"},
       {:postgrex, "~> 0.14.1"}
     ]
@@ -31,8 +32,7 @@ defmodule Migrant.MixProject do
   defp aliases do
     [
       "ecto.setup": ["ecto.create", "ecto.load", "ecto.migrate"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "ecto.migrate": ["ecto.migrate", "ecto.dump"]
+      "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end
 end

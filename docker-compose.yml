@@ -1,7 +1,9 @@
 version: "3"
 services:
   migrant:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/opt/app
     depends_on:

@@ -9,7 +9,7 @@ removes the need for each service to manage its own local DB copy (and migration
 Since all services share the same DB, you must first start it with migrant for 
 local development and testing. The other services will not work without this DB container running.
 
-    $ docker-compose up --scale migrant=0
+    $ docker-compose up -d --scale migrant=0
 
 On initial creation, `setup` must be run for dev and test.
 
