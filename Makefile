@@ -21,3 +21,11 @@ start: ## Start DB as daemon
 setup: ## Initial setup of DB for dev/test
 	docker-compose run --rm migrant mix ecto.setup
 	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.setup
+
+reset: ## Redo the initial setup of DB for dev/test
+	docker-compose run --rm migrant mix ecto.reset
+	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.reset
+
+migrate: ## Migrate DB for dev/test
+	docker-compose run --rm migrant mix ecto.migrate
+	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.migrate
