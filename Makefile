@@ -29,3 +29,7 @@ reset: ## Redo the initial setup of DB for dev/test
 migrate: ## Migrate DB for dev/test
 	docker-compose run --rm migrant mix ecto.migrate
 	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.migrate
+
+rollback: ## Rollback previous migration for dev/test
+	docker-compose run --rm migrant mix ecto.rollback
+	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.rollback
