@@ -1,6 +1,6 @@
 # Migrant
 
-Migrant manages the matchVote Postgresql database schema. It is also used with
+Migrant manages the matchVote PostgreSQL database schema. It is also used with
 other MV services as the local development and test database container. This 
 removes the need for each service to manage its own local DB copy (and migrations).
 

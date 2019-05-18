@@ -19,6 +19,7 @@ start: ## Start DB as daemon
 	docker-compose up -d --scale migrant=0
 
 setup: ## Initial setup of DB for dev/test
+	docker-compose build
 	docker-compose run --rm migrant mix ecto.setup
 	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.setup
 
