@@ -14,7 +14,7 @@ defmodule Migrant.RepsToOfficialsTest do
     |> assert_transfer(first_name: "Arcus", middle_name: "Training", last_name: "Post")
 
     Repo.get!(Official, "3b53f0c8-40ff-462e-b962-7338b58f035e")
-    |> assert_transfer(first_name: "Flashlight", middle_name: "", last_name: "Tinkerbell")
+    |> assert_transfer(first_name: "Flashlight", last_name: "Tinkerbell")
 
     assert old_records() == [nil, nil]
   end
@@ -72,7 +72,7 @@ defmodule Migrant.RepsToOfficialsTest do
       %{
         id: "575098c8-cdf8-4ba6-892b-b65654bbe8eb",
         first_name: "Flashlight",
-        middle_name: "",
+        middle_name: nil,
         last_name: "Tinkerbell",
         mv_key: "flashlight-tinkerbell"
       }

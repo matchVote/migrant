@@ -6,7 +6,9 @@ defmodule Migrant.RepsToOfficials do
   def transfer_ids do
     from(o in Official,
       join: r in Representative,
-      on: [first_name: o.first_name, last_name: o.last_name, middle_name: o.middle_name],
+      on:
+        r.first_name == o.first_name and r.last_name == o.last_name and
+          coalesce(r.middle_name, "") == coalesce(o.middle_name, ""),
       select: {o.id, r.id}
     )
     |> Repo.all()
