@@ -14,9 +14,9 @@ defmodule Migrant.RepsToOfficialsTest do
     |> assert_transfer(first_name: "Arcus", middle_name: "Training", last_name: "Post")
 
     Repo.get!(Official, "3b53f0c8-40ff-462e-b962-7338b58f035e")
-    |> assert_transfer(first_name: "Flashlight", last_name: "Tinkerbell")
+    |> assert_transfer(first_name: "Flashlight", middle_name: "", last_name: "Tinkerbell")
 
-    assert old_records() == []
+    assert old_records() == [nil, nil]
   end
 
   defp assert_transfer(official, data) do
@@ -44,7 +44,7 @@ defmodule Migrant.RepsToOfficialsTest do
       %{
         id: "3b53f0c8-40ff-462e-b962-7338b58f035e",
         first_name: "Flashlight",
-        middle_name: nil,
+        middle_name: "",
         last_name: "Tinkerbell",
         slug: "flashlight-tinkerbell"
       }
@@ -72,7 +72,7 @@ defmodule Migrant.RepsToOfficialsTest do
       %{
         id: "575098c8-cdf8-4ba6-892b-b65654bbe8eb",
         first_name: "Flashlight",
-        middle_name: nil,
+        middle_name: "",
         last_name: "Tinkerbell",
         mv_key: "flashlight-tinkerbell"
       }
@@ -82,14 +82,9 @@ defmodule Migrant.RepsToOfficialsTest do
   end
 
   defp old_records do
-    from(o in Official,
-      where:
-        o.id in [
-          "c3c1da6e-97a1-4bf4-975d-bbaa8f9e72f5",
-          "e5a8038b-1f49-434b-84af-e614018470b6",
-          "575098c8-cdf8-4ba6-892b-b65654bbe8eb"
-        ]
-    )
-    |> Repo.all()
+    [
+      Repo.get(Official, "e5a8038b-1f49-434b-84af-e614018470b6"),
+      Repo.get(Official, "575098c8-cdf8-4ba6-892b-b65654bbe8eb")
+    ]
   end
 end
