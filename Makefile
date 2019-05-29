@@ -34,3 +34,6 @@ migrate: ## Migrate DB for dev/test
 rollback: ## Rollback previous migration for dev/test
 	docker-compose run --rm migrant mix ecto.rollback
 	docker-compose run --rm -e MIX_ENV=test migrant mix ecto.rollback
+
+mixtest: ## Test in context of containers
+	docker-compose run --rm -e MIX_ENV=test migrant mix test
