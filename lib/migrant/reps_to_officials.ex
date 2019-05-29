@@ -3,6 +3,7 @@ defmodule Migrant.RepsToOfficials do
   alias Migrant.Repo
   alias Migrant.Schemas.{Official, Representative}
 
+  @spec transfer_ids :: :ok
   def transfer_ids do
     from(o in Official,
       join: r in Representative,
