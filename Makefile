@@ -37,3 +37,13 @@ rollback: ## Rollback previous migration for dev/test
 
 mixtest: ## Test in context of containers
 	docker-compose run --rm -e MIX_ENV=test migrant mix test
+
+heroku-push: ## Use Heroku to build production image and push to registry
+	heroku container:login
+	heroku container:push worker \
+	  --verbose \
+	  --arg APP_NAME=$(APP_NAME),APP_VSN=$(APP_VSN),MIX_ENV=prod \
+	  --app mv-migrant
+
+heroku-release: ## Deploy container from previously pushed image
+	heroku container:release worker --app mv-migrant
